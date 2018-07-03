@@ -19,12 +19,12 @@ const Logo = styled.img`
 
 const ButtonWrapper = styled.div`
 	height: 30px;
-	min-width: 200px;
-	border: 1px solid white;
+	width: 300px;
 	margin: 8px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+	box-sizing: border-box;
 `;
 
 const TitleWrapper = styled.div`

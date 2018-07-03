@@ -9,13 +9,16 @@ const Selector = styled.select`
 	width: 100%;
 	height: 35px;
 	color: white;
-	background-color: inherit;
+	background-color: #232323a2;
 	outline: none;
 	padding-left: 10px;
+	margin-bottom: 20px;
 `;
 
 const Option = styled.option`
 	background-color: #434343a4;
+	border: none;
+	outline: none;
 `;
 
 class ThemeSelector extends Component {

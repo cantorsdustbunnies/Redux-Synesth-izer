@@ -4,8 +4,9 @@ import styled from 'styled-components';
 const Card = styled.div`
 	width: 280px;
 	margin: 0 auto;
-	min-height: 200px;
+	min-height: 100px;
 	box-sizing: border-box;
+	padding: 0 20px;
 `;
 
 const Title = styled.div`
@@ -16,11 +17,16 @@ const Title = styled.div`
 	font-size: 16px;
 `;
 
+const CardBody = styled.div`
+	width: 100%;
+	height: 100%;
+`;
+
 export default ({ title = 'Background Color', children }) => {
 	return (
 		<Card>
 			<Title>{title}:</Title>
-			{children}
+			<CardBody>{children}</CardBody>
 		</Card>
 	);
 };
