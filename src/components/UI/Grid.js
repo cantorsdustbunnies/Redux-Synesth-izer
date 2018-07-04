@@ -42,11 +42,18 @@ export default class Grid extends Component {
 		this.selectGridItem = this.selectGridItem.bind(this);
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		if (this.props.items) {
-			const { items } = this.props;
 			this.setState({
-				gridItems: items,
+				gridItems: this.props.items,
+			});
+		}
+	}
+
+	componentWillReceiveProps(newProps) {
+		if (newProps.items) {
+			this.setState({
+				gridItems: newProps.items,
 			});
 		}
 	}
@@ -65,8 +72,6 @@ export default class Grid extends Component {
 	}
 
 	colorToRGBA(colorObj) {
-		console.log(colorObj);
-		console.log(`rgba(${colorObj.r},${colorObj.g},${colorObj.b},${colorObj.a})`);
 		return `rgba(${colorObj.r},${colorObj.g},${colorObj.b},${colorObj.a})`;
 	}
 
@@ -103,7 +108,6 @@ export default class Grid extends Component {
 		});
 	}
 	render() {
-		console.log(this.props.active);
 		return <GridWrapper active={this.props.active}>{this.renderGridItems()}</GridWrapper>;
 	}
 }

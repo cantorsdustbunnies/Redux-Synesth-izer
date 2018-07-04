@@ -7,6 +7,8 @@ const Card = styled.div`
 	min-height: 100px;
 	box-sizing: border-box;
 	padding: 0 20px;
+	pointer-events: ${props => (props.active ? 'auto' : 'none')};
+	opacity: ${props => (props.active ? 1 : 0.25)};
 `;
 
 const Title = styled.div`
@@ -22,9 +24,9 @@ const CardBody = styled.div`
 	height: 100%;
 `;
 
-export default ({ title = 'Background Color', children }) => {
+export default ({ title = 'Background Color', children, active = true }) => {
 	return (
-		<Card>
+		<Card active={active}>
 			<Title>{title}:</Title>
 			<CardBody>{children}</CardBody>
 		</Card>

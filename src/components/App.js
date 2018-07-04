@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import BackgroundColorPicker from '../containers/BackgroundColorPicker';
+import BackgroundToggle from '../containers/BackgroundToggle';
 import Editor from './Editor';
 import GraphemeGrid from '../containers/GraphemeGrid';
 import Header from './UI/Header';
@@ -89,8 +91,11 @@ export default class App extends Component {
 					<OptionCard title="Graphemes">
 						<GraphemeGrid active={this.state.editorOpen} />
 					</OptionCard>
-					<OptionCard title="Allow app to change the background color on pages I visit" />
-					<OptionCard title="Background Color" />
+					<OptionCard title="Allow app to change the background color on pages I visit">
+						<BackgroundToggle />
+					</OptionCard>
+
+					<BackgroundColorPicker />
 				</SideBar>
 				<Main headerHeight={HEADER_HEIGHT} sideBarWidth={SIDEBAR_WIDTH}>
 					{this.renderMain()}

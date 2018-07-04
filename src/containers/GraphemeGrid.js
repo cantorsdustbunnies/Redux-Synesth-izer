@@ -6,6 +6,9 @@ import { saveToChromeStorage, initFromChromeStorage } from '../actions';
 import Grid from '../components/UI/Grid';
 
 class GraphemeGrid extends Component {
+	constructor(props) {
+		super(props);
+	}
 	componentWillMount() {
 		this.props.initFromChromeStorage();
 	}

@@ -4,10 +4,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveToChromeStorage, initFromChromeStorage } from '../actions';
 
-import OptionCard from '../components/UI/OptionCard';
-import ColorPickerButton from '../components/UI/ColorPickerButton';
+import CheckBox from '../components/UI/CheckBox';
 
-class BackgroundColorPicker extends Component {
+const Wrapper = styled.div`
+	position: absolute;
+	right: 40px;
+	transform: translateY(-25px);
+`;
+
+class BackgroundToggle extends Component {
 	constructor(props) {
 		super(props);
 		this.toggleEditable = this.toggleEditable.bind(this);
@@ -17,10 +22,6 @@ class BackgroundColorPicker extends Component {
 		this.props.initFromChromeStorage();
 	}
 
-	handleChange = color => {
-		this.props.saveToChromeStorage('background_color', color.rgb);
-	};
-
 	toggleEditable() {
 		const { allow_background_edit, saveToChromeStorage } = this.props;
 		saveToChromeStorage('allow_background_edit', !allow_background_edit);
@@ -28,19 +29,16 @@ class BackgroundColorPicker extends Component {
 
 	render() {
 		return (
-			<OptionCard active={this.props.allow_background_edit} title="Background Color">
-				<ColorPickerButton
-					color={this.props.background_color || { r: 255, g: 255, b: 255, a: 1 }}
-					handleChange={this.handleChange}
-				/>
-			</OptionCard>
+			<Wrapper>
+				<CheckBox onClick={this.toggleEditable} checked={this.props.allow_background_edit} />
+			</Wrapper>
 		);
 	}
 }
 
 const mapStateToProps = state => {
-	const { allow_background_edit, background_color } = state.chrome;
-	return { allow_background_edit, background_color };
+	const { allow_background_edit } = state.chrome;
+	return { allow_background_edit };
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators({ initFromChromeStorage, saveToChromeStorage }, dispatch);
@@ -48,4 +46,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({ initFromChromeStorag
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(BackgroundColorPicker);
+)(BackgroundToggle);

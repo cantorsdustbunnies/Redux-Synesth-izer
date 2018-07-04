@@ -4,7 +4,7 @@
 // Figure out an animation that
 // looks nice enough for transitions
 
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
@@ -20,17 +20,11 @@ const Button = styled.button`
  
 	:hover {
 		background-color: #8141d5;
-		color: white;
+		color: white; 
     }
 
 `;
 
-export default class OptionButton extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return <Button onClick={this.props.onClick}>{this.props.children}</Button>;
-	}
-}
+export default ({ onClick, children }) => {
+	return <Button onClick={onClick}>{children}</Button>;
+};
