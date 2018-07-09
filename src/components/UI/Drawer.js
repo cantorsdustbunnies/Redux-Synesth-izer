@@ -112,28 +112,12 @@ const SideBarButton = styled.div`
 export default class Drawer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			open: this.props.open,
-		};
 		this.getAnimation = this.getAnimation.bind(this);
-		this.toggleSidebar = this.toggleSidebar.bind(this);
 		this.renderSideBarButton = this.renderSideBarButton.bind(this);
 	}
 
-	componentWillReceiveProps(newProps) {
-		this.setState({
-			open: newProps.open,
-		});
-	}
-
-	toggleSidebar() {
-		this.setState({
-			open: !this.state.open,
-		});
-	}
-
 	getAnimation() {
-		if (this.state.open) {
+		if (this.props.open) {
 			return openSidebar;
 		} else {
 			return closeSidebar;
@@ -142,8 +126,8 @@ export default class Drawer extends Component {
 
 	renderSideBarButton() {
 		return (
-			<SideBarButton open={this.state.open} onClick={this.toggleSidebar}>
-				{this.state.open ? (
+			<SideBarButton open={this.props.open} onClick={this.props.toggleDrawer}>
+				{this.props.open ? (
 					<React.Fragment>
 						<div> Options </div>
 						<div> {String.fromCharCode(8612)}</div>
@@ -156,7 +140,6 @@ export default class Drawer extends Component {
 	}
 
 	render() {
-		console.log(this.state.open);
 		return (
 			<React.Fragment>
 				<Sidebar width={this.props.width} headerHeight={this.props.headerHeight} animation={this.getAnimation}>

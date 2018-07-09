@@ -23,18 +23,18 @@ class App extends Component {
 		this.state = {
 			editorOpen: false,
 			title: 'Synes-thizer',
-			sideBarVisible: true,
+			drawerOpen: true,
 		};
 		this.onNewTheme = this.onNewTheme.bind(this);
 		this.onEditTheme = this.onEditTheme.bind(this);
 		this.onCancelEdit = this.onCancelEdit.bind(this);
+		this.toggleDrawer = this.toggleDrawer.bind(this);
 	}
 
 	onCancelEdit() {
 		this.setState({
 			editorOpen: false,
 			title: 'Synes-thizer',
-			sideBarVisible: true,
 		});
 	}
 
@@ -42,7 +42,6 @@ class App extends Component {
 		this.setState({
 			editorOpen: true,
 			title: 'Theme Editor',
-			sideBarVisible: false,
 		});
 	}
 
@@ -50,7 +49,6 @@ class App extends Component {
 		this.setState({
 			editorOpen: true,
 			title: 'Theme Editor',
-			sideBarVisible: false,
 		});
 	}
 
@@ -78,7 +76,14 @@ class App extends Component {
 		}
 	}
 
+	toggleDrawer() {
+		this.setState({
+			drawerOpen: !this.state.drawerOpen,
+		});
+	}
+
 	render() {
+		console.log(this.state);
 		return (
 			<React.Fragment>
 				<Header title={this.state.title} height={HEADER_HEIGHT}>
@@ -88,7 +93,8 @@ class App extends Component {
 					width={SIDEBAR_WIDTH}
 					headerHeight={HEADER_HEIGHT}
 					title={'Options'}
-					open={this.state.sideBarVisible}
+					open={this.state.drawerOpen}
+					toggleDrawer={this.toggleDrawer}
 				>
 					<OptionCard title="Current Theme">
 						<ThemeSelector />
@@ -106,11 +112,11 @@ class App extends Component {
 
 					<BackgroundColorPicker />
 				</Drawer>
-				<Main>
-					<div>
-						<h1> Hello </h1>
-					</div>
-				</Main>
+				<Main
+					editorOpen={this.state.editorOpen}
+					drawerOpen={this.state.sideBarVisible}
+					headerHeight={HEADER_HEIGHT}
+				/>
 			</React.Fragment>
 		);
 	}
