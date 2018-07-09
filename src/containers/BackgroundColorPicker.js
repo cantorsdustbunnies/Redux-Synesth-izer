@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { saveToChromeStorage, initFromChromeStorage } from '../actions';
 
 import OptionCard from '../components/UI/OptionCard';
 import ColorPickerButton from '../components/UI/ColorPickerButton';
+import Divider from '../components/UI/Divider';
 
 class BackgroundColorPicker extends Component {
 	constructor(props) {
@@ -28,12 +28,15 @@ class BackgroundColorPicker extends Component {
 
 	render() {
 		return (
-			<OptionCard active={this.props.allow_background_edit} title="Background Color">
-				<ColorPickerButton
-					color={this.props.background_color || { r: 255, g: 255, b: 255, a: 1 }}
-					handleChange={this.handleChange}
-				/>
-			</OptionCard>
+			<React.Fragment>
+				<Divider />
+				<OptionCard active={this.props.allow_background_edit} title="Background Color">
+					<ColorPickerButton
+						color={this.props.background_color || { r: 255, g: 255, b: 255, a: 1 }}
+						handleChange={this.handleChange}
+					/>
+				</OptionCard>
+			</React.Fragment>
 		);
 	}
 }

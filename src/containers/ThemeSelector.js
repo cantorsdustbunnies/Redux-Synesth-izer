@@ -8,17 +8,17 @@ import { saveToChromeStorage, initFromChromeStorage } from '../actions';
 const Selector = styled.select`
 	width: 100%;
 	height: 35px;
-	color: white;
-	background-color: #232323a2;
+	color: #ddd9ef;
+	background-color: #1a5b65;
 	outline: none;
+	border: none;
 	padding-left: 10px;
 	margin-bottom: 20px;
 `;
 
 const Option = styled.option`
-	background-color: #434343a4;
-	border: none;
-	outline: none;
+	background-color: inherit;
+	font-size: 1em;
 `;
 
 class ThemeSelector extends Component {

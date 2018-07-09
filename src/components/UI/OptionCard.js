@@ -13,10 +13,11 @@ const Card = styled.div`
 
 const Title = styled.div`
 	font-family: Amiri;
-	font-weight: 400;
-	color: #f1f1f1;
+	font-weight: 200;
+	color: #ddd9ef;
 	margin-top: 20px;
 	font-size: 16px;
+	max-width: 70%;
 `;
 
 const CardBody = styled.div`

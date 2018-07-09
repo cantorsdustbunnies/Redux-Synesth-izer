@@ -16,6 +16,7 @@ const GridItem = styled.div`
 	display: flex;
 	color: ${props => (props.color ? props.color : 'gray')};
 	margin: 0;
+	font-size: 16px;
 	padding: 0;
 	justify-content: center;
 	align-items: center;

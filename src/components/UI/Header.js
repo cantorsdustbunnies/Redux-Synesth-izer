@@ -5,16 +5,16 @@ import SLogo from '../../chrome_extension/images/S.png';
 
 const Header = styled.header`
 	height: 56px;
-	background-color: #232323;
+	background-color: #000022;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 `;
 
 const Logo = styled.img`
-	width: 40px;
-	height: 40px;
-	margin: 8px;
+	width: 35px;
+	height: 35px;
+	margin-left: 10px;
 `;
 
 const ButtonWrapper = styled.div`
@@ -35,15 +35,16 @@ const TitleWrapper = styled.div`
 	color: #f4f4f4a2;
 	font-family: Roboto;
 	min-width: 15%;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
 `;
 
 export default ({ title = 'Synes-thizer', children, logo = SLogo }) => {
 	return (
 		<Header>
-			<TitleWrapper>
-				<Logo src={logo} />
-				{title}
-			</TitleWrapper>
+			<Logo src={logo} />
+			<TitleWrapper>{title}</TitleWrapper>
 			<ButtonWrapper>{children}</ButtonWrapper>
 		</Header>
 	);

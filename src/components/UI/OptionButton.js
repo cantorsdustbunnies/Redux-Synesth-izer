@@ -8,21 +8,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-	background-color: #8141d5a2;
-    border: none; 
-    margin: 2px; 
-    outline: none; 
-    color: #ffffffa2
-    width: 100%;  
-	height: 30px; 
+	background-color: #6432a6;
+	border: none;
+	margin: 2px;
+	outline: none;
+	color: #ddd9ef;
+	width: 100%;
+	height: 30px;
 	padding: 0 20px;
-    transition: all 450ms;
- 
+	cursor: pointer;
+	transition: all 450ms;
+
 	:hover {
 		background-color: #8141d5;
-		color: white; 
-    }
-
+		color: white;
+	}
 `;
 
 export default ({ onClick, children }) => {

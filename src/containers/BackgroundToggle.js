@@ -7,9 +7,7 @@ import { saveToChromeStorage, initFromChromeStorage } from '../actions';
 import CheckBox from '../components/UI/CheckBox';
 
 const Wrapper = styled.div`
-	position: absolute;
-	right: 40px;
-	transform: translateY(-25px);
+	transform: translate(80%, -50%);
 `;
 
 class BackgroundToggle extends Component {

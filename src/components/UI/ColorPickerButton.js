@@ -6,13 +6,14 @@ const SwatchWrapper = styled.div`
 	width: 100%;
 	height: 35px;
 	background-color: inherit;
-	border: 1px solid #ffffffa2;
+	border: 1px solid #1a5b65;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 1px;
 	margin-top: 10px;
 	transition: 450ms all;
+	cursor: pointer;
 	:hover {
 		border: 1px solid #8141d5;
 	}
@@ -32,6 +33,8 @@ const Overlay = styled.div`
 	top: 0px;
 	left: 0px;
 	right: 0px;
+	width: 100vw;
+	height: 100vh;
 	z-index: 2;
 `;
 
