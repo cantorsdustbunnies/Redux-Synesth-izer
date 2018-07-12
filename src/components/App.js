@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { initNewTheme, initSelectedTheme } from '../actions/actions_theme';
 
 import BackgroundColorPicker from '../containers/BackgroundColorPicker';
 import BackgroundToggle from '../containers/BackgroundToggle';
-import Divider from '../components/UI/Divider';
-import Editor from './Editor';
+import Divider from './UI/Divider';
 import GraphemeGrid from '../containers/GraphemeGrid';
 import Header from './UI/Header';
-import Intro from './Intro';
+
 import Main from './Main';
 import OptionButton from './UI/OptionButton';
 import OptionCard from './UI/OptionCard';
 import Drawer from './UI/Drawer';
 import ThemeSelector from '../containers/ThemeSelector';
-import ThemeEditor from '../containers/ThemeEditor';
 
 const HEADER_HEIGHT = 56;
 const SIDEBAR_WIDTH = 300;
@@ -21,9 +22,10 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			editorOpen: false,
+			editorOpen: true,
 			title: 'Synes-thizer',
-			drawerOpen: true,
+			drawerOpen: false,
+			isNew: false,
 		};
 		this.onNewTheme = this.onNewTheme.bind(this);
 		this.onEditTheme = this.onEditTheme.bind(this);
@@ -35,6 +37,8 @@ class App extends Component {
 		this.setState({
 			editorOpen: false,
 			title: 'Synes-thizer',
+			isNew: false,
+			drawerOpen: true,
 		});
 	}
 
@@ -42,14 +46,20 @@ class App extends Component {
 		this.setState({
 			editorOpen: true,
 			title: 'Theme Editor',
+			drawerOpen: false,
+			isNew: true,
 		});
+		this.props.initNewTheme();
 	}
 
 	onEditTheme() {
 		this.setState({
 			editorOpen: true,
 			title: 'Theme Editor',
+			drawerOpen: false,
+			isNew: true,
 		});
+		this.props.initSelectedTheme();
 	}
 
 	renderHeaderButtons() {
@@ -83,7 +93,6 @@ class App extends Component {
 	}
 
 	render() {
-		console.log(this.state);
 		return (
 			<React.Fragment>
 				<Header title={this.state.title} height={HEADER_HEIGHT}>
@@ -114,12 +123,18 @@ class App extends Component {
 				</Drawer>
 				<Main
 					editorOpen={this.state.editorOpen}
-					drawerOpen={this.state.sideBarVisible}
+					drawerOpen={this.state.drawerOpen}
 					headerHeight={HEADER_HEIGHT}
+					sidebarWidth={SIDEBAR_WIDTH}
+					isNew={this.state.isNew}
 				/>
 			</React.Fragment>
 		);
 	}
 }
+const mapDispatchToProps = dispatch => bindActionCreators({ initNewTheme, initSelectedTheme }, dispatch);
 
-export default App;
+export default connect(
+	null,
+	mapDispatchToProps
+)(App);

@@ -1,11 +1,16 @@
-import { GET_THEME_DATA } from '../actions/types_theme';
+import { GET_CURRENT_THEME, INIT_NEW_THEME } from '../actions/types_theme';
 
-const DEFAULT_STATE = {};
+const DEFAULT_STATE = {
+	current_theme: [],
+};
 
 export default function(state = DEFAULT_STATE, action) {
+	console.log(action.type, action.payload);
 	switch (action.type) {
-		case GET_THEME_DATA:
-			return Object.assign({}, state, action.payload);
+		case GET_CURRENT_THEME:
+			return { ...state, current_theme: action.payload };
+		case INIT_NEW_THEME:
+			return { ...state, current_theme: action.payload };
 	}
 	return state;
 }

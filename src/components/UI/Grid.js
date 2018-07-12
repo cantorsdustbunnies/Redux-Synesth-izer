@@ -10,7 +10,7 @@ const GridWrapper = styled.div`
 	pointer-events: ${props => (props.active ? 'auto' : 'none')};
 `;
 
-const GridItem = styled.div`
+const GridItem = styled.div.attrs({})`
 	width: 40px;
 	height: 40px;
 	display: flex;
@@ -41,6 +41,7 @@ export default class Grid extends Component {
 			gridItems: [],
 		};
 		this.selectGridItem = this.selectGridItem.bind(this);
+		this.clearSelection = this.clearSelection.bind(this);
 	}
 
 	componentDidMount() {
@@ -63,6 +64,7 @@ export default class Grid extends Component {
 		this.setState({
 			selected: e.target.id,
 		});
+		e.stopPropagation();
 	}
 
 	getColor(item) {
@@ -74,6 +76,12 @@ export default class Grid extends Component {
 
 	colorToRGBA(colorObj) {
 		return `rgba(${colorObj.r},${colorObj.g},${colorObj.b},${colorObj.a})`;
+	}
+
+	clearSelection() {
+		this.setState({
+			selected: null,
+		});
 	}
 
 	addGridItem() {}
@@ -109,6 +117,10 @@ export default class Grid extends Component {
 		});
 	}
 	render() {
-		return <GridWrapper active={this.props.active}>{this.renderGridItems()}</GridWrapper>;
+		return (
+			<GridWrapper onClick={this.clearSelection} active={this.props.active}>
+				{this.renderGridItems()}
+			</GridWrapper>
+		);
 	}
 }

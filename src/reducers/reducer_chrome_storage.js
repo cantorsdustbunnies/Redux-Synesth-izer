@@ -3,7 +3,6 @@ import { INIT, SAVE_TO_STORAGE } from '../actions/types_chrome';
 const DEFAULT_STATE = {};
 
 export default function(state = DEFAULT_STATE, action) {
-	console.log(action);
 	switch (action.type) {
 		case INIT:
 			return Object.assign({}, state, action.payload);

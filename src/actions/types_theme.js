@@ -1,0 +1,2 @@
+export const INIT_NEW_THEME = 'INIT_NEW_THEME';
+export const GET_CURRENT_THEME = 'GET_CURRENT_THEME';

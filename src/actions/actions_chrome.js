@@ -4,7 +4,7 @@ import { default_state } from '../chrome_extension/default_state';
 
 // Each function that accesses chrome's storage will conditionally spoof it inside of redux.
 
-function emitChromeStorageAction(data, type) {
+export function emitChromeStorageAction(data, type) {
 	return {
 		type: type,
 		payload: data,

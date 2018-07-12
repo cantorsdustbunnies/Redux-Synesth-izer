@@ -15,7 +15,12 @@ class GraphemeGrid extends Component {
 
 	renderGrid() {
 		return (
-			<Grid active={this.props.active} theme={this.props.selected_theme} items={this.props.default_graphemes} />
+			<Grid
+				large={this.props.large}
+				active={this.props.active}
+				theme={this.props.selected_theme}
+				items={this.props.default_graphemes}
+			/>
 		);
 	}
 
