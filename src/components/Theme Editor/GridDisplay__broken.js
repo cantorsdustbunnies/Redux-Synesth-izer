@@ -49,8 +49,8 @@ class GridDisplay extends Component {
 				
 			}
 			to {
-				top: ${targetPos.top}px;
-				left: ${targetPos.left}px;
+				top: ${pos.top}px;
+				left: ${-targetPos.left}px;
 				width: ${targetPos.width}px;
 				height: ${targetPos.height}px;
 			
@@ -82,12 +82,12 @@ class GridDisplay extends Component {
 		console.log(this.state);
 		return (
 			<Wrapper>
+				<GridWrapper>{this.fakeGridItems(36)}</GridWrapper>
 				<TargetWrapper>
 					<TargetContainer>
 						<Target id="Target" />
 					</TargetContainer>
 				</TargetWrapper>
-				<GridWrapper>{this.fakeGridItems(36)}</GridWrapper>
 			</Wrapper>
 		);
 	}
@@ -112,14 +112,13 @@ const Wrapper = styled.div`
 
 const GridWrapper = styled.div`
 	width: 50%;
-	height: 100%;
+	max-height: calc(100vh - 56px);
 	background-color: #2253a2;
 	display: flex;
 	justify-content: center;
-	position: absolute;
-	right: 0;
 	flex-wrap: wrap;
-	overflow-y: auto;
+	float: right;
+	overflow: visible;
 `;
 
 const GridItemContainer = styled.div`
@@ -127,13 +126,16 @@ const GridItemContainer = styled.div`
 	height: 120px;
 	margin: 30px;
 	overflow-y: auto;
+	border: 1px dashed lime;
+	position: relative;
+	overflow: visible;
 `;
 
 const GridItem = styled.div`
 	width: 120px;
 	height: 120px;
 	background-color: #43529fa2;
-	position: fixed;
+	position: absolute;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -156,7 +158,7 @@ const TargetWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
+	float: left;
 `;
 
 const Target = styled.div`
